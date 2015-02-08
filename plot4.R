@@ -1,7 +1,7 @@
 # read a subset of the original dataset, which was unzipped into the working directory
 fpc <- file("household_power_consumption.txt","r");
 powerConsumption <- read.table(text = grep("^[1,2]/2/2007", readLines(fpc), value=TRUE), sep=";", na.strings="?") 							 
-closeAllConnections()
+close(fpc)  # or closeAllConnections()
 
 # set names to columns
 names(powerConsumption)<- c("Date", "Time", "GlobalActivePower", "GlobalReactivePower", "Voltage", "GlobalIntensity",
